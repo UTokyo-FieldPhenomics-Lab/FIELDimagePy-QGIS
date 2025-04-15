@@ -16,14 +16,40 @@ import os
 import tempfile
 
 i18n_en = {
-    "windowTitle": "Subplot creation tools",
-    "layerLbl": "Choose the plot boundary polygon:",
+    "windowTitle": "Subplot Division Tool",
+    "layerLbl": "Select plot boundary polygon layer:",
     "focusBtn": "Focus",
-    "colsLbl": "Divide parts by long edge:",
-    "rowsLbl": "Divide parts py short edge:",
-    "domLbl": "Choose DOM layer (for specify same CRS):",
-    "xBufLbl": "Buffer along long edge (m), negative means overlaps:",
-    "yBufLbl": "Buffer along short edge (m), negative means overlaps:"
+    "colsLbl": "Horizontal divisions (columns):",
+    "rowsLbl": "Vertical divisions (rows):",
+    "domLbl": "Select DOM layer (for output CRS):",
+    "xBufLbl": "Row spacing (m), negative for overlap:",
+    "yBufLbl": "Column spacing (m), negative for overlap:",
+    "outputLbl": "Output file path:",
+    "outputPlacehold": "Save as temporary file",
+    "runBtn": "Execute",
+    "prevWinTitle": "Division Preview",
+
+    "savefileDialogTitle": "Save Output File",
+    "savefileDialogTypes": "Shapefiles (*.shp);;All files (*)",
+
+    "err": "Error",
+    "errNotAPolygon": "Please select a valid polygon layer!",
+    "errNotOneLayer": "Plot boundary layer must contain exactly one feature!",
+    "errNotGoodPoly": "Invalid polygon geometry!",
+    "errNot4Poly": "Polygon must be a quadrilateral (4 vertices)!",
+    "errNoZero": "Rows and columns must be greater than 0!",
+    "errException": "Input validation failed",
+    "errRot": "Cannot calculate rotation angle!",
+    "errNegative": "Buffer value too large - resulting subplot size is negative",
+    "errMinRect": "Cannot calculate minimum bounding rectangle!",
+    "errPrevRange": "Cannot calculate valid preview range!",
+    "errMeterCRS": "Please select a projected CRS with meter units",
+    "errSave": "Failed to save file:",
+    "errSaveLoad": "Cannot load saved layer!",
+
+    "success": "Success",
+    "sucSave": "Subplots successfully created and saved to",
+    "sucSaveTemp": "Subplots successfully created as temporary layer"
 }
 
 i18n_cn = {
@@ -34,10 +60,70 @@ i18n_cn = {
     "rowsLbl": "垂直分割份数(列数):",
     "domLbl": "选择DOM图层(用于输出CRS)",
     "xBufLbl": "行间距(米), 负值表示互相重叠: ",
-    "yBufLbl": "列间距(米), 负值表示互相重叠: "
+    "yBufLbl": "列间距(米), 负值表示互相重叠: ",
+    "outputLbl": "输出文件路径:",
+    "outputPlacehold": "储存为临时文件",
+    "runBtn": "运行",
+    "prevWinTitle": "分割预览",
+
+    "savefileDialogTitle": "保存输出文件",
+    "savefileDialogTypes": "Shapefiles (*.shp);;所有文件 (*)",
+
+    "err": "错误",
+    "errNotAPolygon": "请选择一个有效的多边形图层!",
+    "errNotOneLayer": "样地边界图层应只包含一个要素!",
+    "errNotGoodPoly": "多边形几何无效!",
+    "errNot4Poly": "多边形应为一个四边形(4个顶点)!",
+    "errNoZero": "行数和列数必须大于0!",
+    "errException": "输入验证失败",
+    "errRot": "无法计算旋转角度!",
+    "errNegative": "缓冲区值过大导致子地块尺寸为负值",
+    "errMinRect": "无法计算最小面积外接矩形!",
+    "errPrevRange":  "无法计算有效的预览范围!",
+    "errMeterCRS": "请选择米制单位的投影坐标系",
+    "errSave": "保存文件失败:",
+    "errSaveLoad": "无法加载保存的图层!",
+
+    "success": "成功",
+    "sucSave": "子区域已成功创建并保存到",
+    "sucSaveTemp": "子区域已成功创建为临时图层"
 }
 
 i18n_jp = {
+    "windowTitle": "プロット分割ツール",
+    "layerLbl": "プロット境界ポリゴンレイヤを選択:",
+    "focusBtn": "フォーカス",
+    "colsLbl": "水平分割数(列数):",
+    "rowsLbl": "垂直分割数(行数):",
+    "domLbl": "DOMレイヤを選択(出力CRS用):",
+    "xBufLbl": "行間隔(m), 負値は重なりを意味:",
+    "yBufLbl": "列間隔(m), 負値は重なりを意味:",
+    "outputLbl": "出力ファイルパス:",
+    "outputPlacehold": "一時ファイルとして保存",
+    "runBtn": "実行",
+    "prevWinTitle": "分割プレビュー",
+
+    "savefileDialogTitle": "出力ファイルを保存",
+    "savefileDialogTypes": "シェープファイル (*.shp);;すべてのファイル (*)",
+
+    "err": "エラー",
+    "errNotAPolygon": "有効なポリゴンレイヤを選択してください!",
+    "errNotOneLayer": "プロット境界レイヤは1つのみ含む必要あり!",
+    "errNotGoodPoly": "無効なポリゴン形状です!",
+    "errNot4Poly": "ポリゴンは四角形(4頂点)である必要あり!",
+    "errNoZero": "行数と列数は0より大きい必要あり!",
+    "errException": "入力検証失敗",
+    "errRot": "回転角度を計算できません!",
+    "errNegative": "バッファ値が大きすぎてサブプロットサイズが負に",
+    "errMinRect": "最小外接矩形を計算できません!",
+    "errPrevRange": "有効なプレビュー範囲を計算できません!",
+    "errMeterCRS": "メートル単位の投影座標系を選択してください",
+    "errSave": "ファイル保存失敗:",
+    "errSaveLoad": "保存したレイヤを読み込めません!",
+
+    "success": "成功",
+    "sucSave": "サブプロットの作成と保存に成功:",
+    "sucSaveTemp": "サブプロットが一時レイヤとして作成されました"
 }
 
 locale = QLocale.system().name()
@@ -79,7 +165,6 @@ class SubplotDivisionDialog(QDialog):
     
     def __init__(self, parent=None):
         super().__init__(parent)
-        print(locale, lang.keys())
         self.setWindowTitle(lang['windowTitle'])
         self.setMinimumWidth(400)
         
@@ -137,9 +222,9 @@ class SubplotDivisionDialog(QDialog):
         layout.addWidget(self.y_buffer_edit)
         
         # 输出选项
-        self.output_label = QLabel("输出文件路径:")
+        self.output_label = QLabel(lang['outputLbl'])
         self.output_edit = QLineEdit()
-        self.output_edit.setPlaceholderText("save to temporary file")  # 灰色提示文字
+        self.output_edit.setPlaceholderText(lang["outputPlacehold"])  # 灰色提示文字
         self.output_button = QPushButton("...")  # 改为单个点按钮
         self.output_button.setFixedWidth(30)  # 实际使用30px，10px会太窄无法正常显示
         self.output_button.clicked.connect(self.select_output)
@@ -151,15 +236,15 @@ class SubplotDivisionDialog(QDialog):
         layout.addLayout(output_layout)
         
         # 按钮
-        self.preview_button = QPushButton("Preview")
-        self.preview_button.clicked.connect(self.preview)
-        self.run_button = QPushButton("Run")
+        # self.preview_button = QPushButton("Preview")
+        # self.preview_button.clicked.connect(self.preview)
+        self.run_button = QPushButton(lang['runBtn'])
         self.run_button.clicked.connect(self.run)
         self.cancel_button = QPushButton("Cancel")
         self.cancel_button.clicked.connect(self.reject)
         
         button_layout = QHBoxLayout()
-        button_layout.addWidget(self.preview_button)
+        # button_layout.addWidget(self.preview_button)
         button_layout.addWidget(self.run_button)
         button_layout.addWidget(self.cancel_button)
         layout.addLayout(button_layout)
@@ -196,7 +281,7 @@ class SubplotDivisionDialog(QDialog):
     def select_output(self):
         """选择输出文件路径"""
         path, _ = QFileDialog.getSaveFileName(
-            self, "保存输出文件", "", "Shapefiles (*.shp);;所有文件 (*)"
+            self, lang["savefileDialogTitle"], "", lang["savefileDialogTypes"]
         )
         if path:
             if not path.lower().endswith('.shp'):
@@ -209,11 +294,11 @@ class SubplotDivisionDialog(QDialog):
             # 检查图层
             layer = self.layer_combo.currentData()
             if not layer or layer.featureCount() == 0:
-                QMessageBox.warning(self, "错误", "请选择一个有效的多边形图层!")
+                QMessageBox.warning(self, lang["err"], lang["errNotAPolygon"])
                 return False
             
             if layer.featureCount() > 1:
-                QMessageBox.warning(self, "错误", "样地边界图层应只包含一个要素!")
+                QMessageBox.warning(self, lang["err"], lang["errNotOneLayer"])
                 return False
             
             feature = next(layer.getFeatures())
@@ -221,7 +306,7 @@ class SubplotDivisionDialog(QDialog):
             
             # 检查顶点数
             if not geom.isGeosValid():
-                QMessageBox.warning(self, "错误", "多边形几何无效!")
+                QMessageBox.warning(self, lang["err"], lang["errNotGoodPoly"])
                 return False
             
             # 如果是仅验证几何，直接返回
@@ -237,20 +322,20 @@ class SubplotDivisionDialog(QDialog):
                 vertices = geom.asPolygon()[0]
             
             if len(vertices) != 5:  # 注意:闭合多边形第一个和最后一个顶点相同
-                QMessageBox.warning(self, "错误", "多边形应为一个四边形(4个顶点)!")
+                QMessageBox.warning(self, lang["err"], lang["errNot4Poly"])
                 return False
             
             # 检查行数和列数
             rows = int(self.rows_edit.text())
             cols = int(self.cols_edit.text())
             if rows <= 0 or cols <= 0:
-                QMessageBox.warning(self, "错误", "行数和列数必须大于0!")
+                QMessageBox.warning(self, lang["err"], lang["errNoZero"])
                 return False
             
             return True
             
         except Exception as e:
-            QMessageBox.warning(self, "错误", f"输入验证失败: {str(e)}")
+            QMessageBox.warning(self, lang["err"], f"{lang['errException']}: {str(e)}")
             return False
     
     def get_min_area_rectangle(self, polygon):
@@ -378,7 +463,7 @@ class SubplotDivisionDialog(QDialog):
         """聚焦到选定图层并旋转视图使长边水平"""
         angle = self.calculate_rotation_angle()
         if angle is None:
-            QMessageBox.warning(self, "错误", "无法计算旋转角度!")
+            QMessageBox.warning(self, lang["err"], lang['errRot'])
             return
         
         # 获取当前活动地图画布
@@ -420,7 +505,7 @@ class SubplotDivisionDialog(QDialog):
 
         # 验证有效尺寸
         if cell_width <=0 or cell_height <=0:
-            raise ValueError("缓冲区值过大导致子地块尺寸为负值")
+            raise ValueError(lang["errNegative"])
         
         # 标准化向量
         width_step = bottom_vec.normalized() * (cell_width + x_buffer)
@@ -462,7 +547,7 @@ class SubplotDivisionDialog(QDialog):
         # 获取最小面积外接矩形
         rect_geom = self.get_min_area_rectangle(geom)
         if not rect_geom:
-            QMessageBox.warning(self, "错误", "无法计算最小面积外接矩形!")
+            QMessageBox.warning(self, lang["err"], lang['errMinRect'])
             return
         
         rows = int(self.rows_edit.text())
@@ -476,7 +561,7 @@ class SubplotDivisionDialog(QDialog):
         # 创建预览画布（如果不存在）
         if not self.preview_canvas:
             self.preview_canvas = QgsMapCanvas()
-            self.preview_canvas.setWindowTitle("分割预览")
+            self.preview_canvas.setWindowTitle(lang["prevWinTitle"])
             self.preview_canvas.setCanvasColor(Qt.white)
             # 设置为独立窗口，可关闭
             self.preview_canvas.setWindowFlags(Qt.Window)
@@ -523,7 +608,7 @@ class SubplotDivisionDialog(QDialog):
             self.preview_canvas.refreshAllLayers()
             self.preview_canvas.showNormal()
         else:
-            QMessageBox.warning(self, "错误", "无法计算有效的预览范围!")
+            QMessageBox.warning(self, lang["err"], lang['errPrevRange'])
 
     
     def run(self):
@@ -539,7 +624,7 @@ class SubplotDivisionDialog(QDialog):
         # 获取最小面积外接矩形
         rect_geom = self.get_min_area_rectangle(geom)
         if not rect_geom:
-            QMessageBox.warning(self, "错误", "无法计算最小面积外接矩形!")
+            QMessageBox.warning(self, lang["err"], lang['errMinRect'])
             return
         
         rows = int(self.rows_edit.text())
@@ -554,7 +639,7 @@ class SubplotDivisionDialog(QDialog):
         dom_layer = self.dom_combo.currentData()
         target_crs = dom_layer.crs() if dom_layer else layer.crs()
         if target_crs.isGeographic():
-            QMessageBox.warning(self, "错误", "请选择米制单位的投影坐标系")
+            QMessageBox.warning(self, lang["err"], lang["errMeterCRS"])
             return
 
         # subplots（rect_geom） 坐标转换到目标CRS
@@ -604,20 +689,20 @@ class SubplotDivisionDialog(QDialog):
             )
             
             if error[0] != QgsVectorFileWriter.NoError:
-                QMessageBox.warning(self, "错误", f"保存文件失败: {error[1]}")
+                QMessageBox.warning(self, lang["err"], f"{lang['errSave']}: {error[1]}")
                 return
             
             # 重新加载保存的文件
             saved_layer = QgsVectorLayer(output_path, os.path.basename(output_path)[:-4], "ogr")
             if saved_layer.isValid():
                 QgsProject.instance().addMapLayer(saved_layer)
-                QMessageBox.information(self, "成功", f"子区域已成功创建并保存到: {output_path}")
+                QMessageBox.information(self, lang['success'], f"{lang['sucSave']}: {output_path}")
             else:
-                QMessageBox.warning(self, "错误", "无法加载保存的图层!")
+                QMessageBox.warning(self, lang["err"], lang['errSaveLoad'])
         else:
             # 添加临时图层到项目
             QgsProject.instance().addMapLayer(output_layer)
-            QMessageBox.information(self, "成功", f"子区域已成功创建为临时图层")
+            QMessageBox.information(self, lang['success'], lang['sucSaveTemp'])
         
         self.accept()
 
