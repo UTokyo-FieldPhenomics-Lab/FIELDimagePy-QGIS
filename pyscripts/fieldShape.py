@@ -1,3 +1,14 @@
+# File: fieldShape
+# Author: Haozhou Wang
+# Organization: UTOkyo FieldPhenomics Lab
+# Description:
+#     Creating subplots inside the given plot boundary
+# Dependencies:
+#     - Python 3.x
+#     - QGIS 3.x
+# License: MIT
+# Usage: run script directly in python console of QGIS
+
 from qgis.PyQt.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QLabel, 
                                 QLineEdit, QPushButton, QComboBox, QCheckBox,
                                 QMessageBox, QFileDialog)
